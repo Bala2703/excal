@@ -13,7 +13,17 @@ export class FireService {
     this.excalRef = afd.list(this.model)
    }
 
+   getAll():AngularFireList<Excal>{
+    return this.excalRef;
+   }
    create(excal:Excal):any{
     return this.excalRef.push(excal);
+   }
+
+   update(key:string,value:any):Promise<void>{
+    return this.excalRef.update(key,value);
+   }
+   deleteAll():Promise<void>{
+    return this.excalRef.remove();
    }
 }
