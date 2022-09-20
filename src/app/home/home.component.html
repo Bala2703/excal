@@ -1,1 +1,25 @@
-<p>home works!</p>
+<div class="cardBox">
+    <div class="card">
+        <div>
+            <div class="numbers"></div>
+            <div class="cardName">Current Balance</div>
+        </div>
+        <div class="iconBox">
+            <!-- <mat-icon>android</mat-icon> -->
+        </div>
+    </div>
+
+    <div class="card">
+        <div>
+            <span id="ct" class="numbers"></span>
+            <div class="cardName">Total</div>
+        </div>
+        <div class="iconBox">
+            <!-- <i class="material-icons md-24">account_balance</i> -->
+        </div>
+    </div>
+    <mat-form-field>
+        <input matInput placeholder="Enter Income" [(ngModel)]="income" value="">
+    </mat-form-field> 
+    <button mat-raised-button (click)="createData()">submit</button>
+</div>
