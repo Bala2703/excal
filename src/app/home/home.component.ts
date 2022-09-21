@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FireService } from "../service/fire.service";
 import { FormGroup,FormControl } from '@angular/forms';
 import { map } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,14 +10,14 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class HomeComponent implements OnInit {
 
-income: any;
-expense:any;
+income= '0';
+expense='0';
 date:any;
 
 excal!:Excal[];
 currentIncome?:Excal;
 currentIndex = -1;
-
+currbal: any;
   constructor(private fireService:FireService){}
 
   ngOnInit(): void {
@@ -49,6 +49,15 @@ currentIndex = -1;
         )
     ).subscribe(data =>{
       this.excal = data;
+      console.log(this.excal);
+
+      var bal = 0;
+      for(var i=0;i<this.excal.length;i++){
+        const income = Number(data[i].income)
+        const expense = Number(data[i].expense);
+         bal = bal + income - expense;
+        this.currbal = bal;
+      }
     })
   }
   setData(setincome:Excal,index:number){
@@ -66,7 +75,7 @@ currentIndex = -1;
 
 export interface Excal {
   date:any;
-  income:any;
+  income:number;
   expense:any;
   total:any;
 }

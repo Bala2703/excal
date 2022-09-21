@@ -5,7 +5,7 @@
             <div class="cardName">Current Balance</div>
         </div>
         <div class="iconBox">
-            <!-- <mat-icon>android</mat-icon> -->
+            {{currbal}}
         </div>
     </div>
 
@@ -15,15 +15,15 @@
             <div class="cardName">Total</div>
         </div>
         <div class="iconBox">
-            <!-- <i class="material-icons md-24">account_balance</i> -->
+            
         </div>
     </div>
     <mat-form-field>
-        <input type="number" matInput placeholder="Enter Income" [(ngModel)]="income" value="">
+        <input type="number" matInput placeholder="Enter Income" [(ngModel)]="income" value="0">
     </mat-form-field>
 
     <mat-form-field>
-        <input type="number" matInput placeholder="Enter Expense" [(ngModel)]="expense">
+        <input type="number" matInput placeholder="Enter Expense" [(ngModel)]="expense" value="0">
     </mat-form-field>
 
     <mat-form-field>
@@ -54,10 +54,11 @@
             <td>{{excal.expense}}</td>
         </tr>
         </tbody>
-        <button mat-button (click)="removeAll()">
+        <button class="stickybutton" mat-button (click)="removeAll()">
             Remove All 
         </button>
     </table>
+
 </div>
 
   
