@@ -17,10 +17,7 @@ date:any;
 excal!:Excal[];
 currentIncome?:Excal;
 currentIndex = -1;
-html: any;
 
-dataSource = new MatTableDataSource<Excal>();
-displayedColumns: any = ['i', 'income', 'NAME', 'START_TIME' , "TIME" , "ENTRY" , "TOTAL_HOUR"];
   constructor(private fireService:FireService){}
 
   ngOnInit(): void {
@@ -52,11 +49,6 @@ displayedColumns: any = ['i', 'income', 'NAME', 'START_TIME' , "TIME" , "ENTRY" 
         )
     ).subscribe(data =>{
       this.excal = data;
-      console.log(this.excal.length);
-      length = this.excal.length
-      // for(var i=1;i<=length;i++){
-        
-      // }
     })
   }
   setData(setincome:Excal,index:number){
