@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -25,11 +26,12 @@
     justify-content: space-between;
     cursor: pointer;
     border: 1px solid;
-   
+
 }
-.cardBox .card:hover{
+
+.cardBox .card:hover {
     transition: 0.1s;
-    box-shadow: 4px 5px rgba(0, 0, 0,0.2);
+    box-shadow: 4px 5px rgba(0, 0, 0, 0.2);
 }
 
 .cardBox .card .numbers {
@@ -51,17 +53,37 @@
     .cardBox {
         grid-template-columns: repeat(1, 1fr);
     }
-    .cardBox .card{
+
+    .cardBox .card {
         transition: 0.1s;
-        box-shadow: 4px 5px rgba(0, 0, 0,0.2);
+        box-shadow: 4px 5px rgba(0, 0, 0, 0.2);
     }
 }
 
-.list {
-    text-align: center;
-    max-width: 750px;
+.fixTableHead{
+    margin: 15px;
+    overflow-y: auto;
+    height: 40%;
+}
+.fixTableHead thead th{
+    position: sticky;
+    top: 0;
+}
+table{
+    padding: 10px;
     margin: auto;
-  }
-  .list-group-item:hover{
+    margin-top: calc(100% - 87%);
+    border-collapse: collapse;
+    width: 100%;
+}
+th,td{
+    padding: 8px 10px;
+    border: 2px solid #3c3294;
+}
+th{
+    background: #93aadd;
+}
+td:hover{
     background-color: rgb(143, 223, 143);
-  }
+}
+

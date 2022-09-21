@@ -32,19 +32,33 @@
     <button mat-raised-button (click)="createData()">submit</button>
 </div>
 
-<div class="list row" style="margin-top: 20%;">
-    <div class="col-md-6">
-        <h4>List</h4>
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let excal of excal;let i = index" [class.active]="i == currentIndex"
-                (click)="setIncome(excal,i)">
-                Date = {{excal.date}}
-            Income = {{excal.income}}
-                Expense = {{excal.expense}}
-            </li>
-        </ul>
-        <button class="m-3 btn btn-sm btn-danger" (click)="removeAll()">
+<div class="fixTableHead">
+    <table>
+        <thead>
+            <tr>
+                <th>S.no</th>
+                <th>Date</th>
+                <th>Income</th>
+                <th>Expense</th>
+            </tr>
+        </thead>
+
+        <tbody *ngFor="let excal of excal;let i = index"
+        [class.active] ="i == currentIndex"
+        (click)="setData(excal,i)">
+
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{excal.date}}</td>
+            <td>{{excal.income}}</td>
+            <td>{{excal.expense}}</td>
+        </tr>
+        </tbody>
+        <button mat-button (click)="removeAll()">
             Remove All 
         </button>
-    </div>
+    </table>
 </div>
+
+  
+  

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FireService } from "../service/fire.service";
 import { FormGroup,FormControl } from '@angular/forms';
 import { map } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,11 +17,14 @@ date:any;
 excal!:Excal[];
 currentIncome?:Excal;
 currentIndex = -1;
+html: any;
 
+dataSource = new MatTableDataSource<Excal>();
+displayedColumns: any = ['i', 'income', 'NAME', 'START_TIME' , "TIME" , "ENTRY" , "TOTAL_HOUR"];
   constructor(private fireService:FireService){}
 
   ngOnInit(): void {
-    this.retrieveIncome();
+    this.retrieveData();
   }
 
   createData(){
@@ -36,10 +40,10 @@ currentIndex = -1;
   refreshList(){
     this.currentIncome = undefined;
     this.currentIndex = -1;
-    this.retrieveIncome();
+    this.retrieveData();
   }
 
-  retrieveIncome():void{
+  retrieveData():void{
     this.fireService.getAll().snapshotChanges().pipe(
       map((changes: any[]) => 
         changes.map(c => ({
@@ -48,10 +52,14 @@ currentIndex = -1;
         )
     ).subscribe(data =>{
       this.excal = data;
-      console.log(this.excal);
+      console.log(this.excal.length);
+      length = this.excal.length
+      // for(var i=1;i<=length;i++){
+        
+      // }
     })
   }
-  setIncome(setincome:Excal,index:number){
+  setData(setincome:Excal,index:number){
     this.currentIncome = setincome;
     this.currentIndex  = index;
     console.log("hi");
