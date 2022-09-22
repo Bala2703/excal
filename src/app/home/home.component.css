@@ -1,17 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Audiowide");
+
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
-    font-weight: 650;
+    font-weight: 750;
+    color: #000;
 }
 
 .cardBox {
     position: relative;
     width: 100%;
-    top: 5%;
+    top: 0%;
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -20,12 +23,13 @@
 
 .cardBox .card {
     position: relative;
-    background: #fff;
+    background: #ffffff;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     cursor: pointer;
     border: 1px solid;
+    border-radius: 10px;
 
 }
 
@@ -41,14 +45,24 @@
 }
 
 .cardBox .card .cardName {
-    color: #999;
+    color: #000;
 }
 
 .cardBox .card .iconBox {
-    font-size: 2.5em;
-    color: #03a9f4;
+    font-size: 2em;
+    color: #000;
 }
 
+.createdata{
+    border-radius: 10px;
+    width: calc(100% - 50%);
+    background-color: #000731;
+    color:#fff;
+}
+.cardBox .createdata{
+    margin-left: calc(100% - 75%);
+  
+}
 @media (max-width:480px) {
     .cardBox {
         grid-template-columns: repeat(1, 1fr);
@@ -56,36 +70,18 @@
 
     .cardBox .card {
         transition: 0.1s;
-        box-shadow: 4px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: -5px 8px #e7b32e;
     }
 }
 
-.fixTableHead{
-    margin: 10px;
-    margin-top: calc(100% - 91%);
-    overflow-y: auto;
-    height: 40%;
-}
-.fixTableHead thead th{
-    position: sticky;
-    top: 0;
-}
-table{
-    border-collapse: collapse;
-    width: 100%;
-}
-th,td{
-    padding: 8px 10px;
-    border: 2px solid #3c3294;
-}
-th{
-    background: #93aadd;
-}
-td:hover{
-    background-color: rgb(143, 223, 143);
-}
 
-.fixTableHead table .stickybutton{
-    position: sticky;
-    bottom: 0;
+.name{
+    padding-top: 10% ;
+    color: rgb(15, 80, 201);
+    text-align: center;
+}
+.details{
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }

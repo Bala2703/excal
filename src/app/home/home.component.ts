@@ -6,13 +6,16 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+
 })
 export class HomeComponent implements OnInit {
-
+name = "GOWTHAM'S  EXCAL"
 income= '0';
 expense='0';
 date:any;
+incomeres:any;
+expenseres:any;
 
 excal!:Excal[];
 currentIncome?:Excal;
@@ -23,15 +26,19 @@ currbal: any;
   ngOnInit(): void {
     this.retrieveData();
   }
-
+  refresh(){
+    window.location.reload();
+  }
   createData(){
     let Record:any={};
     Record['income'] = this.income;
     Record['expense'] = this.expense;
     Record['date'] = this.date;
+    Record['incomeres'] = this.incomeres;
+    Record['expenseres'] = this.expenseres;
     this.fireService.create(Record).then(()=>{
-      console.log('Create new instance');
       window.location.reload();
+
     })
   }
   refreshList(){
@@ -42,35 +49,28 @@ currbal: any;
 
   retrieveData():void{
     this.fireService.getAll().snapshotChanges().pipe(
-      map((changes: any[]) => 
+      map((changes: any[]) =>
         changes.map(c => ({
           key:c.payload.key, ...c.payload.val()})
           )
         )
     ).subscribe(data =>{
       this.excal = data;
-      console.log(this.excal);
-
-      var bal = 0;
-      for(var i=0;i<this.excal.length;i++){
-        const income = Number(data[i].income)
-        const expense = Number(data[i].expense);
-         bal = bal + income - expense;
-        this.currbal = bal;
-      }
+      // console.log(this.excal);
     })
   }
   setData(setincome:Excal,index:number){
     this.currentIncome = setincome;
     this.currentIndex  = index;
-    console.log("hi");
-    console.log(this.currentIndex)
+    // console.log(this.currentIndex)
   }
-  removeAll(){
-    this.fireService.deleteAll().then(() =>
-    this.refreshList()).catch(err => console.log(err));
-  }
-
+  removeAll(name:string){
+    if(confirm("Are you sure?")){
+      this.fireService.deleteAll().then(() =>
+      this.refreshList()).catch(err => console.log(err));
+      window.location.reload();
+      }
+    }
 }
 
 export interface Excal {

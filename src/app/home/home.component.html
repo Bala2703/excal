@@ -1,3 +1,4 @@
+<h1 (click)="refresh()" class="name">{{name}}</h1>
 <div class="cardBox">
     <div class="card">
         <div>
@@ -8,18 +9,12 @@
             {{currbal}}
         </div>
     </div>
-
-    <div class="card">
-        <div>
-            <span id="ct" class="numbers"></span>
-            <div class="cardName">Total</div>
-        </div>
-        <div class="iconBox">
-            
-        </div>
-    </div>
     <mat-form-field>
         <input type="number" matInput placeholder="Enter Income" [(ngModel)]="income" value="0">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input type="text" matInput placeholder="From" [(ngModel)]="incomeres" value="0">
     </mat-form-field>
 
     <mat-form-field>
@@ -27,39 +22,14 @@
     </mat-form-field>
 
     <mat-form-field>
-        <input type="date" matInput [(ngModel)]="date">
+        <input type="text" matInput placeholder="To" [(ngModel)]="expenseres" value="0">
     </mat-form-field>
-    <button mat-raised-button (click)="createData()">submit</button>
+
+    <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input type="date" matInput  [(ngModel)]="date">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+    </mat-form-field>
+    <button class="createdata" mat-raised-button (click)="createData()">Submit</button>
+    <button class="details" routerLink="/details" mat-button>Click here to view Details</button>
 </div>
-
-<div class="fixTableHead">
-    <table>
-        <thead>
-            <tr>
-                <th>S.no</th>
-                <th>Date</th>
-                <th>Income</th>
-                <th>Expense</th>
-            </tr>
-        </thead>
-
-        <tbody *ngFor="let excal of excal;let i = index"
-        [class.active] ="i == currentIndex"
-        (click)="setData(excal,i)">
-
-        <tr>
-            <td>{{i+1}}</td>
-            <td>{{excal.date}}</td>
-            <td>{{excal.income}}</td>
-            <td>{{excal.expense}}</td>
-        </tr>
-        </tbody>
-        <button class="stickybutton" mat-button (click)="removeAll()">
-            Remove All 
-        </button>
-    </table>
-
-</div>
-
-  
-  

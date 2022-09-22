@@ -13,6 +13,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatTableModule } from "@angular/material/table";
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
 
 import { FirestoreModule } from "@angular/fire/firestore";
 import { AngularFireModule } from "@angular/fire/compat";
@@ -20,10 +21,12 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 
 import { FormsModule } from '@angular/forms';
+import { DetailsComponent } from './details/details.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { FormsModule } from '@angular/forms';
     FirestoreModule,
     FormsModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

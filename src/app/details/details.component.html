@@ -1,0 +1,52 @@
+<div style="justify-content: space-between;display: flex;" >
+<button class="back"  routerLink="/home"color="none"><mat-icon>reply</mat-icon></button>
+<button class="refresh" (click)="refresh()"><mat-icon>refresh</mat-icon></button>
+</div>
+
+<div class="fixTableHead">
+    <table>
+        <thead>
+            <tr>
+                <th>S.no</th>
+                <th>Date</th>
+                <th>Income</th>
+                <th>Expense</th>
+            </tr>
+        </thead>
+
+        <tbody *ngFor="let excal of excal;let i = index"
+        [class.active] ="i == currentIndex"
+        (click)="setData(excal,i)">
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{excal.date}}</td>
+            <td>{{excal.income}}</td>
+            <td>{{excal.expense}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<button class="stickybutton" mat-button (click)="removeAll()">
+    Remove All 
+</button>
+
+<div class="cardBox">
+    <div class="card">
+        <div>
+            <div class="numbers"></div>
+            <div class="cardName">Income : </div>
+        </div>
+        <div class="iconBox">
+            
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers"></div>
+            <div class="cardName">Expense :</div>
+        </div>
+        <div class="iconBox">
+            
+        </div>
+    </div>
+</div>

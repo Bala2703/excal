@@ -4,4 +4,6 @@ export interface Excal {
     income:any;
     expense:any;
     total:any;
+    incomeres:any;
+    expenseres:any;
 }

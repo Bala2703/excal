@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { map } from 'rxjs';
 import { Excal } from "../excal.model";
 
 @Injectable({
@@ -15,6 +16,9 @@ export class FireService {
 
    getAll():AngularFireList<Excal>{
     return this.excalRef;
+   }
+   getCurr(id:any){
+    return this.afd.object('excal'+id).snapshotChanges().pipe(map(res => res.payload.val()))
    }
    create(excal:Excal):any{
     return this.excalRef.push(excal);
