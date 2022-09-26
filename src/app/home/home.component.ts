@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FireService } from "../service/fire.service";
-import { FormGroup,FormControl } from '@angular/forms';
 import { map } from 'rxjs';
-import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,8 +13,8 @@ name = "GOWTHAM'S  EXCAL"
 income= '0';
 expense='0';
 date:any;
-incomeres:any;
-expenseres:any;
+incomeres='--';
+expenseres='--';
 
 excal!:Excal[];
 currentIncome?:Excal;
@@ -57,20 +56,15 @@ currbal: any;
     ).subscribe(data =>{
       this.excal = data;
       // console.log(this.excal);
+      var bal = 0;
+      for(var i=0;i<this.excal.length;i++){
+        const income = Number(data[i].income)
+        const expense = Number(data[i].expense);
+         bal = bal + income - expense;
+        this.currbal = bal;
+      }
     })
   }
-  setData(setincome:Excal,index:number){
-    this.currentIncome = setincome;
-    this.currentIndex  = index;
-    // console.log(this.currentIndex)
-  }
-  removeAll(name:string){
-    if(confirm("Are you sure?")){
-      this.fireService.deleteAll().then(() =>
-      this.refreshList()).catch(err => console.log(err));
-      window.location.reload();
-      }
-    }
 }
 
 export interface Excal {

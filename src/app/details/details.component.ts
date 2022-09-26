@@ -14,11 +14,12 @@ export class DetailsComponent implements OnInit {
 currentIncome?:Excal;
 currentIndex = -1;
 curr : any;
+  incomeView: any;
+  expenseView:any;
   constructor(private fireService : FireService) { }
 
   ngOnInit(): void {
     this.retrieveData();
-
   }
   retrieveData():void{
     this.fireService.getAll().snapshotChanges().pipe(
@@ -34,10 +35,6 @@ curr : any;
   setData(setincome:Excal,index:number){
     this.currentIncome = setincome;
     this.currentIndex  = index;
-    this.curr = this.fireService.getCurr(this.currentIndex).subscribe(data =>
-      {
-        console.log(data)
-    } ) 
   }
   refreshList(){
     this.currentIncome = undefined;
@@ -54,7 +51,10 @@ curr : any;
     refresh(){
       window.location.reload();
     }
-  currentData(){
-    // this.fireService.getAll(this.)
-  }
+    currentData(){
+      this.fireService.getCurrentData().subscribe(data => {
+        this.incomeView = data[this.currentIndex].incomeres;
+        this.expenseView = data[this.currentIndex].expenseres;
+      });
+    }
 }

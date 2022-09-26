@@ -18,10 +18,10 @@
         [class.active] ="i == currentIndex"
         (click)="setData(excal,i)">
         <tr>
-            <td>{{i+1}}</td>
-            <td>{{excal.date}}</td>
-            <td>{{excal.income}}</td>
-            <td>{{excal.expense}}</td>
+            <td (click)="currentData()">{{i+1}}</td>
+            <td (click)="currentData()">{{excal.date}}</td>
+            <td (click)="currentData()">{{excal.income}}</td>
+            <td (click)="currentData()">{{excal.expense}}</td>
         </tr>
         </tbody>
     </table>
@@ -34,7 +34,7 @@
     <div class="card">
         <div>
             <div class="numbers"></div>
-            <div class="cardName">Income : </div>
+            <div class="cardName">Income : {{this.incomeView}}</div>
         </div>
         <div class="iconBox">
             
@@ -43,7 +43,7 @@
     <div class="card">
         <div>
             <div class="numbers"></div>
-            <div class="cardName">Expense :</div>
+            <div class="cardName">Expense : {{this.expenseView}}</div>
         </div>
         <div class="iconBox">
             
