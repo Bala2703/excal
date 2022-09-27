@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
-import { ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 import { map, Observable } from 'rxjs';
 import { Excal } from "../excal.model";
 

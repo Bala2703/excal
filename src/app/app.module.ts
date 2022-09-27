@@ -22,11 +22,13 @@ import { environment } from '../environments/environment';
 
 import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DetailsComponent
+    DetailsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
