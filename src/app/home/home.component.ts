@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FireService } from "../service/fire.service";
 import { map } from 'rxjs';
+import { AuthService } from '../service/auth.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -9,25 +11,23 @@ import { map } from 'rxjs';
 
 })
 export class HomeComponent implements OnInit {
-name = "GOWTHAM'S  EXCAL"
+name = this.authservice.username+"'s Excal"
 income= '0';
 expense='0';
 date:any;
 incomeres='--';
 expenseres='--';
-
 excal!:Excal[];
 currentIncome?:Excal;
 currentIndex = -1;
 currbal: any;
-  constructor(private fireService:FireService){}
+  constructor(private fireService:FireService,
+    private authservice:AuthService ){}
 
   ngOnInit(): void {
     this.retrieveData();
   }
-  refresh(){
-    window.location.reload();
-  }
+
   createData(){
     let Record:any={};
     Record['income'] = this.income;
@@ -36,8 +36,11 @@ currbal: any;
     Record['incomeres'] = this.incomeres;
     Record['expenseres'] = this.expenseres;
     this.fireService.create(Record).then(()=>{
-      window.location.reload();
-
+      this.income = '0';
+      this.expense = '0';
+      this.date = '';
+      this.incomeres = '--';
+      this.expenseres = '--';
     })
   }
   refreshList(){
@@ -55,7 +58,7 @@ currbal: any;
         )
     ).subscribe(data =>{
       this.excal = data;
-      // console.log(this.excal);
+      console.log(this.excal);
       var bal = 0;
       for(var i=0;i<this.excal.length;i++){
         const income = Number(data[i].income)

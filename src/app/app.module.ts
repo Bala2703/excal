@@ -23,12 +23,16 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
 import { LoginComponent } from './login/login.component';
+import { AuthService } from './service/auth.service';
+import { FireService } from './service/fire.service';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DetailsComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,7 @@ import { LoginComponent } from './login/login.component';
     MatTableModule,
     MatDatepickerModule
   ],
-  providers: [],
+  providers: [AuthService,FireService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

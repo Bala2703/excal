@@ -1,25 +1,30 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Excal } from "../excal.model";
-
+import { AuthService } from "../service/auth.service";
 @Injectable({
   providedIn: 'root'
 })
 export class FireService {
-  private model = '/excal';
-  excalRef!: AngularFireList<Excal>;
+  user!:Observable<any>;
+  private model = `/excal`;
+//  excalRef!: AngularFireList<Excal>;
+  excalRef: any;
+
   list: any;
 
-  constructor(private afd: AngularFireDatabase) {
-    this.excalRef = afd.list(this.model)
+  constructor(private afd: AngularFireDatabase,
+    private authservice:AuthService) {
+    this.excalRef = afd.list(this.model+'/'+this.authservice.username)
   }
 
-  getAll(): AngularFireList<Excal> {
+  getAll(): AngularFireList<any> { 
     return this.excalRef;
   }
   getCurrentData(): Observable<Excal[]> {
-    this.list = this.afd.list("excal").valueChanges()
+    this.list = this.afd.list('excal'+'/'+this.authservice.username).valueChanges()
+    console.log(this.list);
     return this.list;
 
   }

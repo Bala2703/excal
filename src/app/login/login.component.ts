@@ -8,9 +8,13 @@ import { AuthService } from '../service/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  error! : 'error'
   constructor(public authService:AuthService) { }
 
   ngOnInit(): void {
   }
- 
+  login(email:any,password:any){
+    this.authService.loginWithEmail(email,password)
+    
+  }
 }

@@ -45,11 +45,7 @@ curr : any;
     if(confirm("Are you sure?")){
       this.fireService.deleteAll().then(() =>
       this.refreshList()).catch(err => console.log(err));
-      window.location.reload();
       }
-    }
-    refresh(){
-      window.location.reload();
     }
     currentData(){
       this.fireService.getCurrentData().subscribe(data => {

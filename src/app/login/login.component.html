@@ -1,1 +1,4 @@
-<input type="submit" value="Sign with google" (click)="authService.googleAuth()">
+<input type="email"  placeholder="Enter email" #email>
+<input type="password" placeholder="Enter password" #password>
+<input type="submit" value="submit" (click)="login(email.value,password.value)">
+<!-- <h2 *ngIf="expression"></h2> -->
