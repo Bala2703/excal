@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { Excal } from '../excal.model';
 import { FireService } from "../service/fire.service";
@@ -16,7 +17,8 @@ currentIndex = -1;
 curr : any;
   incomeView: any;
   expenseView:any;
-  constructor(private fireService : FireService) { }
+  constructor(private fireService : FireService,
+    private router : Router) { }
 
   ngOnInit(): void {
     this.retrieveData();
@@ -52,5 +54,8 @@ curr : any;
         this.incomeView = data[this.currentIndex].incomeres;
         this.expenseView = data[this.currentIndex].expenseres;
       });
+    }
+    Onselect(){
+      this.router.navigate(['home',localStorage.getItem('name')])
     }
 }

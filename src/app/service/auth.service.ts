@@ -36,7 +36,12 @@ export class AuthService {
       .then((credential) => {
         this.authState = credential.user?.displayName
         this.username = credential.user?.displayName
-        this.router.navigate(['home'])
+
+        localStorage.setItem("email",email);
+        localStorage.setItem("password",password);
+        localStorage.setItem("name",this.username);
+        
+        this.router.navigate(['home',localStorage.getItem('name')])
         console.log(credential);
 
       })
