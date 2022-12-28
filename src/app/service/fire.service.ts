@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { deleteField, FieldValue, updateDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Excal } from "../excal.model";
 import { AuthService } from "../service/auth.service";
@@ -35,6 +36,7 @@ export class FireService {
   update(key: string, value: any): Promise<void> {
     return this.excalRef.update(key, value);
   }
+
   deleteAll(): Promise<void> {
     return this.excalRef.remove();
   }

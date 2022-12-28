@@ -24,7 +24,7 @@
     "@capacitor/android": "^4.2.0",
     "@capacitor/cli": "^4.2.0",
     "@capacitor/core": "^4.2.0",
-    "@capacitor/ios": "^4.2.0",
+    "@capacitor/ios": "^4.6.1",
     "firebase": "^9.10.0",
     "firebase-tools": "^11.9.0",
     "rxjs": "~7.5.0",

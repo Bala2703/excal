@@ -1,6 +1,5 @@
 <div style="justify-content: space-between;display: flex;" >
 <button class="back"  (click)="Onselect()" color="none"><mat-icon>reply</mat-icon></button>
-<!-- <button class="refresh" (click)="refresh()"><mat-icon>refresh</mat-icon></button> -->
 </div>
 
 <div class="fixTableHead">
@@ -13,7 +12,6 @@
                 <th>Expense</th>
             </tr>
         </thead>
-
         <tbody *ngFor="let excal of excal;let i = index"
         [class.active] ="i == currentIndex"
         (click)="setData(excal,i)">
@@ -26,6 +24,7 @@
         </tbody>
     </table>
 </div>
+<!-- <button class="delete" (click)="delete()"> delete</button> -->
 <button class="stickybutton" mat-button (click)="removeAll()">
     Remove All 
 </button>
@@ -46,7 +45,6 @@
             <div class="cardName">Expense : {{this.expenseView}}</div>
         </div>
         <div class="iconBox">
-            
         </div>
     </div>
 </div>

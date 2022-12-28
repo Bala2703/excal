@@ -11,51 +11,54 @@ import { FireService } from "../service/fire.service";
 })
 export class DetailsComponent implements OnInit {
 
-  excal!:Excal[];
-currentIncome?:Excal;
-currentIndex = -1;
-curr : any;
+  excal!: Excal[];
+  currentIncome?: Excal;
+  currentIndex = -1;
+  curr: any;
   incomeView: any;
-  expenseView:any;
-  constructor(private fireService : FireService,
-    private router : Router) { }
+  expenseView: any;
+  currdelete!:any;
+  constructor(private fireService: FireService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.retrieveData();
   }
-  retrieveData():void{
+  retrieveData(): void {
     this.fireService.getAll().snapshotChanges().pipe(
       map((changes: any[]) =>
         changes.map(c => ({
-          key:c.payload.key, ...c.payload.val()})
-          )
+          key: c.payload.key, ...c.payload.val()
+        })
         )
-    ).subscribe((data: Excal[]) =>{
+      )
+    ).subscribe((data: Excal[]) => {
       this.excal = data;
     })
   }
-  setData(setincome:Excal,index:number){
+  setData(setincome: Excal, index: number) {
     this.currentIncome = setincome;
-    this.currentIndex  = index;
+    this.currentIndex = index;
   }
-  refreshList(){
+  refreshList() {
     this.currentIncome = undefined;
     this.currentIndex = -1;
     this.retrieveData();
   }
-  removeAll(){
-    if(confirm("Are you sure?")){
+  removeAll() {
+    if (confirm("Are you sure?")) {
       this.fireService.deleteAll().then(() =>
-      this.refreshList()).catch(err => console.log(err));
-      }
+        this.refreshList()).catch(err => console.log(err));
     }
-    currentData(){
-      this.fireService.getCurrentData().subscribe(data => {
-        this.incomeView = data[this.currentIndex].incomeres;
-        this.expenseView = data[this.currentIndex].expenseres;
-      });
-    }
-    Onselect(){
-      this.router.navigate(['home',localStorage.getItem('name')])
-    }
+  }
+  currentData() {
+    this.fireService.getCurrentData().subscribe(data => {
+      this.incomeView = data[this.currentIndex].incomeres;
+      this.expenseView = data[this.currentIndex].expenseres;
+    });
+  }
+
+  Onselect() {
+    this.router.navigate(['home', localStorage.getItem('name')])
+  }
 }
